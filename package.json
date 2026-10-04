@@ -1,5 +1,5 @@
 {
-  "name": "naturallyfunny-go",
+  "name": "trueardian-go",
   "version": "1.0.0",
   "description": "Go vanity URL redirector using Cloudflare Workers",
   "main": "index.js",

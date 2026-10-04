@@ -5,11 +5,9 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname.replace(/^\/+/, "");
 
-    const VANITY_DOMAIN = "go.naturallyfunny.dev";
-    const NEW_DOMAIN = "trueardian.com";
-    const NEW_VANITY_DOMAIN = `go.${NEW_DOMAIN}`;
-    const CONTACT_EMAIL = `ardian@${NEW_DOMAIN}`;
-    const MOVED_TO = path ? `${NEW_VANITY_DOMAIN}/${path}` : NEW_VANITY_DOMAIN;
+    const DOMAIN = "trueardian.com";
+    const VANITY_DOMAIN = `go.${DOMAIN}`;
+    const CONTACT_EMAIL = `ardian@${DOMAIN}`;
 
     const segments = path ? path.split("/") : [];
     const moduleName = segments[0];
@@ -33,12 +31,16 @@ export default {
       });
     }
 
+    if (moduleName && repoURL) {
+      return Response.redirect(repoURL, 302);
+    }
+
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moved to ${MOVED_TO}</title>
+  <title>${VANITY_DOMAIN}</title>
   <style>
     :root {
       --fg: #0a0a0a;
@@ -63,13 +65,14 @@ export default {
       text-align: center;
     }
     .title {
-      font-size: 28px;
+      font-size: 20px;
       font-weight: 600;
-      line-height: 1.3;
-      overflow-wrap: anywhere;
+      margin-bottom: 8px;
     }
-    .title a {
-      color: var(--fg);
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
     }
     .divider {
       height: 1px;
@@ -91,7 +94,8 @@ export default {
 </head>
 <body>
   <div class="container">
-    <div class="title">Moved to <a href="https://${MOVED_TO}">${MOVED_TO}</a></div>
+    <div class="title">${VANITY_DOMAIN}</div>
+    <div class="subtitle">Go module hosting</div>
     <div class="divider"></div>
     <div class="contact">
       Contact:
