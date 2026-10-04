@@ -1,4 +1,4 @@
-export const GITHUB_URL = "https://github.com/naturallyfunny";
+export const GITHUB_URL = "https://github.com/trueardian";
 
 export const MODULES = {
   adk: `${GITHUB_URL}/adk`,

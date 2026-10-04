@@ -8,6 +8,8 @@ export default {
     const DOMAIN = "naturallyfunny.dev";
     const VANITY_DOMAIN = `go.${DOMAIN}`;
     const CONTACT_EMAIL = `ardian@${DOMAIN}`;
+    const NEW_VANITY_DOMAIN = "go.trueardian.com";
+    const MOVED_TO = path ? `${NEW_VANITY_DOMAIN}/${path}` : NEW_VANITY_DOMAIN;
 
     const segments = path ? path.split("/") : [];
     const moduleName = segments[0];
@@ -29,10 +31,6 @@ export default {
       return new Response(html, {
         headers: { "Content-Type": "text/html" },
       });
-    }
-
-    if (moduleName && repoURL) {
-      return Response.redirect(repoURL, 302);
     }
 
     const html = `<!DOCTYPE html>
@@ -74,6 +72,9 @@ export default {
       color: var(--muted);
       margin-bottom: 32px;
     }
+    .subtitle a {
+      color: var(--fg);
+    }
     .divider {
       height: 1px;
       background: var(--border);
@@ -95,7 +96,7 @@ export default {
 <body>
   <div class="container">
     <div class="title">${VANITY_DOMAIN}</div>
-    <div class="subtitle">Go module hosting</div>
+    <div class="subtitle">Moved to <a href="https://${MOVED_TO}">${MOVED_TO}</a></div>
     <div class="divider"></div>
     <div class="contact">
       Contact:
