@@ -1,4 +1,4 @@
-export const GITHUB_URL = "https://github.com/trueardian";
+const GITHUB_URL = "https://github.com/trueardian";
 
 export const MODULES = {
   api: `${GITHUB_URL}/api`,

@@ -1,4 +1,4 @@
-import { MODULES, GITHUB_URL } from "./modules.js";
+import { MODULES } from "./modules.js";
 
 export default {
   async fetch(request) {
